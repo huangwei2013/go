@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package model;
+
+message Pair {
+    int32 key = 1;
+    string values = 2;
+}
+
+message CommonReq {
+    uint32 version = 1;
+    string action = 2;
+    map<string, Pair> data = 3;
+}
+
+message CommonRsp {
+    uint32 code = 1;
+    string msg = 2;
+    map<string, Pair> data = 3;
+}
+
+
+message StreamReq {
+    uint32 code = 1;
+    string action = 2;
+    uint32 count = 3;
+}
+
+message StreamRsp {
+    uint32 code = 1;                      // eg. code=0:完成; code=1:还有更多内容; code=2:出错
+    repeated string data = 2;
+}   

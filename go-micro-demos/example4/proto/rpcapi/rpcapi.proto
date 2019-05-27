@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package rpcapi;
+import "github.com/lpxxn/gomicrorpc/example4/proto/model/common.proto";
+
+// 服务接口
+service Demo {
+    rpc Hello(model.CommonReq) returns (model.CommonRsp) {}
+    rpc MyName(model.CommonReq) returns (model.CommonRsp) {}
+    
+    rpc Stream(model.StreamReq) returns (stream model.StreamRsp) {}
+    rpc BidirectionalStream(stream model.StreamReq) returns (stream model.StreamRsp) {}
+}
+
+
+service User {
+    rpc Login(model.CommonReq) returns (model.CommonRsp) {}
+    rpc Logout(model.CommonReq) returns (model.CommonRsp) {}
+    rpc LoginCheck(model.CommonReq) returns (model.CommonRsp) {}
+}
+
+/*
+service Shopping {
+    rpc GetCargo(model.CommonReq) returns (model.CommonRsp) {}
+    rpc GetOrder(model.CommonReq) returns (model.CommonRsp) {}
+    rpc SetCargo(model.CommonReq) returns (model.CommonRsp) {}
+    rpc SetOrder(model.CommonReq) returns (model.CommonRsp) {}
+}
+*/
